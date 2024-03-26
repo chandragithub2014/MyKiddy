@@ -13,8 +13,10 @@ Introducing KidzzKit, the ultimate starting kit for kids! KidzzKit is an interac
 We do not collect or share any personal information from users of the KidzzKit app, especially from children under the age of 13. In fact the app does not collect information about user of any age.
 The app does not collect any information about user .
 
+
 **Changes to this policy**
-Changes to this Policy
+
+
 
 We reserve the right to update or modify this privacy policy at any time without prior notice. Any changes to the policy will be reflected in the "Last Updated" date at the top of this page. We encourage users to review this policy periodically to stay informed about how we collect, use, and protect their personal information.
 
