@@ -3,7 +3,11 @@
 Introducing KidzzKit, the ultimate starting kit for kids! KidzzKit is an interactive app designed to introduce children to the basics of alphabets, numbers, colors, months, and weekdays in a fun and engaging way. With five exciting features, KidzzKit offers an immersive learning experience for young learners.
 
 **Privacy policy**
+
+
 **Last updated March 26,2024**
+
+
 **Information Collection and Use**
 
 We do not collect or share any personal information from users of the KidzzKit app, especially from children under the age of 13. In fact the app does not collect information about user of any age.
