@@ -253,13 +253,19 @@ fun AlphabetItem(alphabet: Char, alphabets: List<Alphabet>, onClick: (Char) -> U
                 Text(
                     text = alphabet.toString().lowercase(),
                     modifier = Modifier
-                        .padding(8.dp)
+                        .padding(5.dp)
                         .graphicsLayer {
                             scaleX = scale
                             scaleY = scale
                             transformOrigin = TransformOrigin.Center
                         },
-                    color = Color.Red
+                    //color = Color.Red
+                    style = TextStyle(
+                        color = Color.Red,
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold
+                        // Set the desired font size here
+                    )
                 )
 
             }

@@ -130,7 +130,7 @@ fun ColorItem(
                         transformOrigin = TransformOrigin.Center
                     },
                 style = TextStyle(
-                    color = if (colorName.uppercase(Locale.getDefault()) != "WHITE") Color.White else Color.Black,
+                    color = if (colorName.uppercase(Locale.getDefault()) == "YELLOW" || colorName.uppercase(Locale.getDefault()) == "ORANGE" ||  colorName.uppercase(Locale.getDefault()) == "WHITE") Color.Black else Color.White,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
                     // Set the desired font size here

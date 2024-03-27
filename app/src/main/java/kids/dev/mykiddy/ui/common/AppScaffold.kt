@@ -46,43 +46,43 @@ fun AppScaffold(
 
                     CircularText(
                         text = if(isLowerCase) "a" else "A",
-                        size = 30.dp,
+                        size = 40.dp,
                         backgroundColor = Color.Red,
                         textColor = Color.White
                     ){
                         onScaffoldButtonClick(ScreenTypes.ALPHABETS_SCREEN)
                     }
-                    Spacer(modifier = Modifier.size(5.dp))
+                    Spacer(modifier = Modifier.size(10.dp))
                     CircularText(
                         text = "1",
-                        size = 30.dp,
+                        size = 40.dp,
                         backgroundColor = Color.Blue,
                         textColor = Color.White
                     ){
                         onScaffoldButtonClick(ScreenTypes.NUMBERS_SCREEN)
                     }
-                    Spacer(modifier = Modifier.size(5.dp))
+                    Spacer(modifier = Modifier.size(10.dp))
                     CircularText(
                         text = "C",
-                        size = 30.dp,
+                        size = 40.dp,
                         backgroundColor = Color.Green,
                         textColor = Color.Blue
                     ){
                         onScaffoldButtonClick(ScreenTypes.COLORS_SCREEN)
                     }
-                    Spacer(modifier = Modifier.size(5.dp))
+                    Spacer(modifier = Modifier.size(10.dp))
                     CircularText(
                         text = "W",
-                        size = 30.dp,
+                        size = 40.dp,
                         backgroundColor = hexToColor("#f37735"),
                         textColor = Color.Black
                     ){
                         onScaffoldButtonClick(ScreenTypes.DAYS_SCREEN)
                     }
-                    Spacer(modifier = Modifier.size(5.dp))
+                    Spacer(modifier = Modifier.size(10.dp))
                     CircularText(
                         text = "M",
-                        size = 30.dp,
+                        size = 40.dp,
                         backgroundColor = hexToColor("#123e61"),
                         textColor = Color.White
                     ){
