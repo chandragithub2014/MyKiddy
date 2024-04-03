@@ -10,6 +10,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -32,10 +33,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kids.dev.mykiddy.R
 import kids.dev.mykiddy.ui.alphabets.ui.AlphabetItem
 import kids.dev.mykiddy.ui.alphabets.ui.viewmodel.AlphabetViewModel
 import kotlinx.coroutines.delay
@@ -46,20 +49,33 @@ fun DisplayNumericGrid(
     textToSpeech: TextToSpeech
 ){
     val numbers = (1..20).toList()
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(3), verticalArrangement = Arrangement.spacedBy(4.dp),
-        horizontalArrangement = Arrangement.spacedBy(4.dp),
-        contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
-    ){
-        items(numbers) { number ->
-            NumericItem(number = number) { receivedNumber ->
-                textToSpeech.speak(
-                    receivedNumber,
-                    TextToSpeech.QUEUE_FLUSH,
-                    null,
-                    ""
-                )
+    Column {
 
+        Text(
+            text = stringResource(R.string.numbers_label),
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            style = TextStyle(
+                color = Color.Red,
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold
+                // Set the desired font size here
+            )
+        )
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(3), verticalArrangement = Arrangement.spacedBy(4.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+            contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
+        ) {
+            items(numbers) { number ->
+                NumericItem(number = number) { receivedNumber ->
+                    textToSpeech.speak(
+                        receivedNumber,
+                        TextToSpeech.QUEUE_FLUSH,
+                        null,
+                        ""
+                    )
+
+                }
             }
         }
     }
@@ -88,7 +104,7 @@ fun NumericItem(number: Int, onClick: (String) -> Unit) {
         modifier = Modifier
             .width(100.dp) // Set width
             .height(100.dp)
-         //   .padding(1.dp)
+            //   .padding(1.dp)
             .clickable {
                 onClick(number.toString())
                 isSelected = !isSelected

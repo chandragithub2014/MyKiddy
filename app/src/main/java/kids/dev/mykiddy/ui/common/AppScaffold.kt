@@ -54,7 +54,7 @@ fun AppScaffold(
                     }
                     Spacer(modifier = Modifier.size(10.dp))
                     CircularText(
-                        text = "1",
+                        text = "N",
                         size = 40.dp,
                         backgroundColor = Color.Blue,
                         textColor = Color.White

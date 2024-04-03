@@ -10,8 +10,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -32,10 +34,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kids.dev.mykiddy.R
 import kids.dev.mykiddy.domain.model.ColorInfo
 import kids.dev.mykiddy.ui.alphabets.ui.viewmodel.AlphabetViewModel
 import kids.dev.mykiddy.ui.colorInfo.viewmodel.ColorInfoViewModel
@@ -50,25 +54,39 @@ fun ColorInfoListComposable(
     colorInfoViewModel: ColorInfoViewModel = get()
 ) {
     val colorInfoListState: List<ColorInfo> by colorInfoViewModel.colorInfoList
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(3), verticalArrangement = Arrangement.spacedBy(4.dp),
-        horizontalArrangement = Arrangement.spacedBy(4.dp),
-        contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
-    ) {
-        items(colorInfoListState) { colorInfo ->
-            ColorItem(
-                colorInfo = colorInfo,
-                colorInfoViewModel = colorInfoViewModel
-            ) { receivedColor ->
-                textToSpeech.speak(
-                    receivedColor,
-                    TextToSpeech.QUEUE_FLUSH,
-                    null,
-                    ""
-                )
+    Column {
+
+        Text(
+            text = stringResource(R.string.colors_label),
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally),
+            style = TextStyle(
+                color = Color.Black,
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold
+                // Set the desired font size here
+            )
+        )
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(3), verticalArrangement = Arrangement.spacedBy(4.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+            contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
+        ) {
+            items(colorInfoListState) { colorInfo ->
+                ColorItem(
+                    colorInfo = colorInfo,
+                    colorInfoViewModel = colorInfoViewModel
+                ) { receivedColor ->
+                    textToSpeech.speak(
+                        receivedColor,
+                        TextToSpeech.QUEUE_FLUSH,
+                        null,
+                        ""
+                    )
+
+                }
 
             }
-
         }
     }
 
@@ -130,7 +148,10 @@ fun ColorItem(
                         transformOrigin = TransformOrigin.Center
                     },
                 style = TextStyle(
-                    color = if (colorName.uppercase(Locale.getDefault()) == "YELLOW" || colorName.uppercase(Locale.getDefault()) == "ORANGE" ||  colorName.uppercase(Locale.getDefault()) == "WHITE") Color.Black else Color.White,
+                    color = if (colorName.uppercase(Locale.getDefault()) == "YELLOW" || colorName.uppercase(
+                            Locale.getDefault()
+                        ) == "ORANGE" || colorName.uppercase(Locale.getDefault()) == "WHITE"
+                    ) Color.Black else Color.White,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
                     // Set the desired font size here

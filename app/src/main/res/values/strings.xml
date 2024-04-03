@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">KidzzKit</string>
+    <string name="alphabet_label">Alphabets</string>
+    <string name="numbers_label">Numbers</string>
+    <string name="colors_label">Colors</string>
+    <string name="week_names">Week Names</string>
+    <string name="months_names">Months</string>
 </resources>

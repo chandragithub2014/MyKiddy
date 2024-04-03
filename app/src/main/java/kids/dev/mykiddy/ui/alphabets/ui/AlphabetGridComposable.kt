@@ -59,6 +59,7 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -96,10 +97,10 @@ fun AlphabetComposable(
         title = "Kidz Kit",
         isLowerCase = isLowerCase,
 
-        onScaffoldButtonClick = {receivedScreenType ->
+        onScaffoldButtonClick = { receivedScreenType ->
             screenType = receivedScreenType
         }
-       ) {
+    ) {
 
         LaunchedEffect(Unit) {
             textToSpeech = TextToSpeech(context) { status ->
@@ -135,15 +136,19 @@ fun AlphabetComposable(
                         alphabetList
                     )
                 }
+
                 ScreenTypes.COLORS_SCREEN -> {
                     ColorInfoListComposable(textToSpeechInstance)
                 }
+
                 ScreenTypes.DAYS_SCREEN -> {
                     DisplayWeeKInfoGrid(textToSpeechInstance)
                 }
+
                 ScreenTypes.MONTHS_SCREEN -> {
                     MonthInfoGrid(textToSpeechInstance)
                 }
+
                 else -> {
                     DisplayNumericGrid(textToSpeechInstance)
                 }
@@ -162,26 +167,39 @@ fun DisplayAlphabetGrid(
     alphabetList: List<Alphabet>
 ) {
     val alphabets = if (isLowerCase) ('a'..'z').toList() else ('A'..'Z').toList()
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(3), verticalArrangement = Arrangement.spacedBy(4.dp),
-        horizontalArrangement = Arrangement.spacedBy(4.dp),
-        contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
-    ) {
-        items(alphabets) { alphabet ->
-            AlphabetItem(alphabet = alphabet, alphabetList) { receivedAlphabet ->
-                val result =
-                    alphabetViewModel.fetchWordForSelectedAlphabet(
-                        receivedAlphabet.toString().uppercase(
-                            Locale.getDefault()
+    Column {
+
+        Text(
+            text = stringResource(R.string.alphabet_label),
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            style = TextStyle(
+                color = Color.Red,
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold
+                // Set the desired font size here
+            )
+        )
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(3), verticalArrangement = Arrangement.spacedBy(4.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+            contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
+        ) {
+            items(alphabets) { alphabet ->
+                AlphabetItem(alphabet = alphabet, alphabetList) { receivedAlphabet ->
+                    val result =
+                        alphabetViewModel.fetchWordForSelectedAlphabet(
+                            receivedAlphabet.toString().uppercase(
+                                Locale.getDefault()
+                            )
                         )
-                    )
-                result?.let { alphabetInfo ->
-                    textToSpeech.speak(
-                        "$receivedAlphabet for ${alphabetInfo.alphabetVal}",
-                        TextToSpeech.QUEUE_FLUSH,
-                        null,
-                        ""
-                    )
+                    result?.let { alphabetInfo ->
+                        textToSpeech.speak(
+                            "$receivedAlphabet for ${alphabetInfo.alphabetVal}",
+                            TextToSpeech.QUEUE_FLUSH,
+                            null,
+                            ""
+                        )
+                    }
                 }
             }
         }

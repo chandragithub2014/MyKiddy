@@ -9,6 +9,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -31,10 +32,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kids.dev.mykiddy.R
 import kotlinx.coroutines.delay
 import java.time.Month
 import java.util.Locale
@@ -44,21 +47,38 @@ fun MonthInfoGrid(
     textToSpeech: TextToSpeech
 ) {
 
-    val monthNames = Month.entries.map {  it.name.lowercase(Locale.getDefault()).replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() } }
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(2), verticalArrangement = Arrangement.spacedBy(4.dp),
-        horizontalArrangement = Arrangement.spacedBy(4.dp),
-        contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
-    ){
-        items(monthNames) { monthInfo ->
-            MonthInfoItem(name = monthInfo) { receivedMonth ->
-                textToSpeech.speak(
-                    receivedMonth,
-                    TextToSpeech.QUEUE_FLUSH,
-                    null,
-                    ""
-                )
+    val monthNames = Month.entries.map {
+        it.name.lowercase(Locale.getDefault())
+            .replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
+    }
+    Column {
 
+        Text(
+            text = stringResource(R.string.months_names),
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally),
+            style = TextStyle(
+                color = Color.Red,
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold
+                // Set the desired font size here
+            )
+        )
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2), verticalArrangement = Arrangement.spacedBy(4.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+            contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
+        ) {
+            items(monthNames) { monthInfo ->
+                MonthInfoItem(name = monthInfo) { receivedMonth ->
+                    textToSpeech.speak(
+                        receivedMonth,
+                        TextToSpeech.QUEUE_FLUSH,
+                        null,
+                        ""
+                    )
+
+                }
             }
         }
     }
