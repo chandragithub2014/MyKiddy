@@ -41,6 +41,7 @@ import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -49,6 +50,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.Divider
 import androidx.compose.material.FabPosition
 import androidx.compose.material.Icon
@@ -167,14 +169,16 @@ fun DisplayAlphabetGrid(
     alphabetList: List<Alphabet>
 ) {
     val alphabets = if (isLowerCase) ('a'..'z').toList() else ('A'..'Z').toList()
-    Column {
+    Column(modifier = Modifier.fillMaxSize().background(Color.White)) {
 
         Text(
             text = stringResource(R.string.alphabet_label),
-            modifier = Modifier.align(Alignment.CenterHorizontally),
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                ,
             style = TextStyle(
                 color = Color.Red,
-                fontSize = 24.sp,
+                fontSize = 30.sp,
                 fontWeight = FontWeight.Bold
                 // Set the desired font size here
             )

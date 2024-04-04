@@ -54,15 +54,15 @@ fun ColorInfoListComposable(
     colorInfoViewModel: ColorInfoViewModel = get()
 ) {
     val colorInfoListState: List<ColorInfo> by colorInfoViewModel.colorInfoList
-    Column {
+    Column(modifier = Modifier.fillMaxSize().background(Color.White)) {
 
         Text(
             text = stringResource(R.string.colors_label),
             modifier = Modifier
                 .align(Alignment.CenterHorizontally),
             style = TextStyle(
-                color = Color.Black,
-                fontSize = 24.sp,
+                color = Color.Red,
+                fontSize = 30.sp,
                 fontWeight = FontWeight.Bold
                 // Set the desired font size here
             )
