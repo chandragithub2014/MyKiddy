@@ -32,41 +32,21 @@ import androidx.navigation.NavHostController
 import kids.dev.mykiddy.ui.alphabets.ui.viewmodel.AlphabetViewModel
 import java.util.Locale
 import org.koin.androidx.compose.get
-import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material.Divider
-import androidx.compose.material.FabPosition
-import androidx.compose.material.Icon
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.toLowerCase
-import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.unit.sp
 import kids.dev.mykiddy.R
 import kids.dev.mykiddy.domain.model.Alphabet
@@ -77,7 +57,6 @@ import kids.dev.mykiddy.ui.numbers.DisplayNumericGrid
 import kids.dev.mykiddy.ui.weeks.DisplayWeeKInfoGrid
 import kids.dev.mykiddy.utils.ScreenTypes
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 
 @Composable
