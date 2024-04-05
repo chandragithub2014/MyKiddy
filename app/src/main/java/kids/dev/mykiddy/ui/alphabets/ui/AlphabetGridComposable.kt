@@ -45,6 +45,9 @@ import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.SemanticsActions
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
@@ -149,7 +152,6 @@ fun DisplayAlphabetGrid(
 ) {
     val alphabets = if (isLowerCase) ('a'..'z').toList() else ('A'..'Z').toList()
     Column(modifier = Modifier.fillMaxSize().background(Color.White)) {
-
         Text(
             text = stringResource(R.string.alphabet_label),
             modifier = Modifier
@@ -213,6 +215,7 @@ fun AlphabetItem(alphabet: Char, alphabets: List<Alphabet>, onClick: (Char) -> U
     Card(
         backgroundColor = Color.White,
         modifier = Modifier
+            .semantics(mergeDescendants = true){contentDescription =  alphabet.toString()}
             .width(100.dp) // Set width
             .height(100.dp)
             //  .padding(4.dp)
@@ -225,13 +228,15 @@ fun AlphabetItem(alphabet: Char, alphabets: List<Alphabet>, onClick: (Char) -> U
     ) {
         Box(
             modifier = Modifier
-                .fillMaxSize(),
+                .fillMaxSize()
+                .semantics(mergeDescendants = true){},
             contentAlignment = Alignment.Center
         ) {
 
             Text(
                 text = alphabet.toString(),
                 modifier = Modifier
+                   // .semantics { contentDescription =  alphabet.toString()}
                     .padding(8.dp)
                     .graphicsLayer {
                         scaleX = scale
@@ -254,6 +259,7 @@ fun AlphabetItem(alphabet: Char, alphabets: List<Alphabet>, onClick: (Char) -> U
                 Text(
                     text = alphabet.toString().lowercase(),
                     modifier = Modifier
+                     //   .semantics { contentDescription = "" }
                         .padding(5.dp)
                         .graphicsLayer {
                             scaleX = scale
@@ -278,7 +284,7 @@ fun AlphabetItem(alphabet: Char, alphabets: List<Alphabet>, onClick: (Char) -> U
             ) {
                 Image(
                     painter = painterResource(id = alphabetImage),
-                    contentDescription = "Your Image"
+                    contentDescription = null
                 )
 
             }

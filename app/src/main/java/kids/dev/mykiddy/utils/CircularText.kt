@@ -10,6 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 
 @Composable
@@ -19,18 +21,21 @@ fun CircularText(
     backgroundColor: Color,
     textColor: Color,
     shape: Shape = CircleShape,
+    talkBackText:String = "Scaffold Items",
     onClick: () -> Unit
 ) {
     Box(
         modifier = Modifier
             .size(size)
             .background(color = backgroundColor, shape = shape)
-            .clickable { onClick() },
+            .clickable(onClickLabel = "") { onClick() }
+            ,
         contentAlignment = androidx.compose.ui.Alignment.Center
     ) {
         Text(
             text = text,
-            color = textColor
+            color = textColor,
+            modifier = Modifier.semantics { contentDescription = talkBackText }
         )
     }
 }
