@@ -5,4 +5,9 @@
     <string name="colors_label">Colors</string>
     <string name="week_names">Week Names</string>
     <string name="months_names">Months</string>
+    <string name="alphabet_launch_label">Launch Alphabets</string>
+    <string name="numbers_launch_label">Launch Numbers</string>
+    <string name="week_launch_names">Launch Week Days</string>
+    <string name="months_launch_names">Launch Months</string>
+    <string name="colors_launch_label">Launch Colors</string>
 </resources>

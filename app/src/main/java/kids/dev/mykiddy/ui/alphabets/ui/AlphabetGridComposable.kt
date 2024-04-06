@@ -41,11 +41,16 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.lazy.grid.itemsIndexed
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.CollectionInfo
 import androidx.compose.ui.semantics.SemanticsActions
+import androidx.compose.ui.semantics.collectionInfo
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
@@ -158,7 +163,7 @@ fun DisplayAlphabetGrid(
                 .align(Alignment.CenterHorizontally)
                 ,
             style = TextStyle(
-                color = Color.Red,
+                color = Color(android.graphics.Color.parseColor("#AF1818")),
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold
                 // Set the desired font size here
@@ -167,9 +172,13 @@ fun DisplayAlphabetGrid(
         LazyVerticalGrid(
             columns = GridCells.Fixed(3), verticalArrangement = Arrangement.spacedBy(4.dp),
             horizontalArrangement = Arrangement.spacedBy(4.dp),
-            contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
+            contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp),
+            modifier = Modifier
+                // Add extra padding at the bottom to allow scrolling
+                .padding(bottom = 10.dp)
+                //.verticalScroll(rememberScrollState(), enabled = true)
         ) {
-            items(alphabets) { alphabet ->
+           items(alphabets) { alphabet ->
                 AlphabetItem(alphabet = alphabet, alphabetList) { receivedAlphabet ->
                     val result =
                         alphabetViewModel.fetchWordForSelectedAlphabet(
@@ -215,7 +224,7 @@ fun AlphabetItem(alphabet: Char, alphabets: List<Alphabet>, onClick: (Char) -> U
     Card(
         backgroundColor = Color.White,
         modifier = Modifier
-            .semantics(mergeDescendants = true){contentDescription =  alphabet.toString()}
+            .semantics(mergeDescendants = true){/*contentDescription =  alphabet.toString()*/}
             .width(100.dp) // Set width
             .height(100.dp)
             //  .padding(4.dp)
@@ -229,7 +238,7 @@ fun AlphabetItem(alphabet: Char, alphabets: List<Alphabet>, onClick: (Char) -> U
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .semantics(mergeDescendants = true){},
+                .semantics(mergeDescendants = true){contentDescription =  alphabet.toString()},
             contentAlignment = Alignment.Center
         ) {
 
@@ -244,7 +253,7 @@ fun AlphabetItem(alphabet: Char, alphabets: List<Alphabet>, onClick: (Char) -> U
                         transformOrigin = TransformOrigin.Center
                     },
                 style = TextStyle(
-                    color = Color.Red,
+                    color = Color(android.graphics.Color.parseColor("#AF1818")),
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
                     // Set the desired font size here
@@ -268,7 +277,7 @@ fun AlphabetItem(alphabet: Char, alphabets: List<Alphabet>, onClick: (Char) -> U
                         },
                     //color = Color.Red
                     style = TextStyle(
-                        color = Color.Red,
+                        color = Color(android.graphics.Color.parseColor("#AF1818")),
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Bold
                         // Set the desired font size here

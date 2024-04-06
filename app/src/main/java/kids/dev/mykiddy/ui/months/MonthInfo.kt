@@ -60,7 +60,7 @@ fun MonthInfoGrid(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally),
             style = TextStyle(
-                color = Color.Red,
+                color = Color(android.graphics.Color.parseColor("#AF1818")),
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold
                 // Set the desired font size here
@@ -134,7 +134,7 @@ fun MonthInfoItem(name: String, onClick: (String) -> Unit) {
                         transformOrigin = TransformOrigin.Center
                     },
                 style = TextStyle(
-                    color = Color.Red,
+                    color = Color(android.graphics.Color.parseColor("#AF1818")),
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
                     // Set the desired font size here

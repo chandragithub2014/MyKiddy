@@ -44,9 +44,9 @@ fun AppScaffold(
                         CircularText(
                             text = if (isLowerCase) "a" else "A",
                             size = 40.dp,
-                            backgroundColor = Color.Red,
+                            backgroundColor = Color(android.graphics.Color.parseColor("#AF1818")),
                             textColor = Color.White,
-                            talkBackText = stringResource(R.string.alphabet_label)
+                            talkBackText = stringResource(R.string.alphabet_launch_label)
                         ) {
                             onScaffoldButtonClick(ScreenTypes.ALPHABETS_SCREEN)
                         }
@@ -56,7 +56,7 @@ fun AppScaffold(
                             size = 40.dp,
                             backgroundColor = Color.Blue,
                             textColor = Color.White,
-                            talkBackText = stringResource(R.string.numbers_label)
+                            talkBackText = stringResource(R.string.numbers_launch_label)
                         ) {
                             onScaffoldButtonClick(ScreenTypes.NUMBERS_SCREEN)
                         }
@@ -66,7 +66,7 @@ fun AppScaffold(
                             size = 40.dp,
                             backgroundColor = Color.Green,
                             textColor = Color.Blue,
-                            talkBackText = stringResource(R.string.colors_label)
+                            talkBackText = stringResource(R.string.colors_launch_label)
                         ) {
                             onScaffoldButtonClick(ScreenTypes.COLORS_SCREEN)
                         }
@@ -76,7 +76,7 @@ fun AppScaffold(
                             size = 40.dp,
                             backgroundColor = hexToColor("#f37735"),
                             textColor = Color.Black,
-                            talkBackText = stringResource(R.string.week_names)
+                            talkBackText = stringResource(R.string.week_launch_names)
                         ) {
                             onScaffoldButtonClick(ScreenTypes.DAYS_SCREEN)
                         }
@@ -86,7 +86,7 @@ fun AppScaffold(
                             size = 40.dp,
                             backgroundColor = hexToColor("#123e61"),
                             textColor = Color.White,
-                            talkBackText = stringResource(R.string.months_names)
+                            talkBackText = stringResource(R.string.months_launch_names)
                         ) {
                             onScaffoldButtonClick(ScreenTypes.MONTHS_SCREEN)
                         }

@@ -136,16 +136,16 @@ class KidzInfo {
         return listOf(
             ColorInfo(),
             ColorInfo("#fffb00", "Yellow"),
-            ColorInfo("#f50aff", "Pink"),
+            ColorInfo("#CF00D6", "Pink"),
             ColorInfo("#000000", "Black"),
             ColorInfo("#008000", "Green"),
             ColorInfo("#0000FF", "Blue"),
             ColorInfo("#FFA500", "Orange"),
             ColorInfo("#800080", "Purple"),
             ColorInfo("#FFFFFF", "White"),
-            ColorInfo("#808080", "Gray"),
+            ColorInfo("#757575", "Gray"),
             ColorInfo("#A52A2A", "Brown"),
-            ColorInfo("#FF00FF", "Magenta")
+            ColorInfo("#9E009E", "Magenta")
 
 
         )
