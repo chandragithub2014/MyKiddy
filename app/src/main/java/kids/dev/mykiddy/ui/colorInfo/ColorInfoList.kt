@@ -63,7 +63,7 @@ fun ColorInfoListComposable(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally),
             style = TextStyle(
-                color = Color.Red,
+                color = Color(android.graphics.Color.parseColor("#AF1818")),
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold
                 // Set the desired font size here

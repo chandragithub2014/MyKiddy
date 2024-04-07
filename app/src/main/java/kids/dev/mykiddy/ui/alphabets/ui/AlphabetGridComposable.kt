@@ -41,6 +41,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -169,6 +171,7 @@ fun DisplayAlphabetGrid(
                 // Set the desired font size here
             )
         )
+        Spacer(modifier = Modifier.size(20.dp))
         LazyVerticalGrid(
             columns = GridCells.Fixed(3), verticalArrangement = Arrangement.spacedBy(4.dp),
             horizontalArrangement = Arrangement.spacedBy(4.dp),
